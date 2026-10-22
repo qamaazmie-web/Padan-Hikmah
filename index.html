@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misi Padankan Hikmah — Ekspedisi Rimba Ajaib</title>
+<style>
+:root{--green:#18794e;--lime:#b7f36b;--cream:#fff9e8;--ink:#173b2b;--pink:#ff9fc5;--gold:#ffd45c}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#b9f1ff 0%,#eaffd0 48%,#b2e88a 100%);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}
+.top{max-width:1200px;margin:auto;padding:18px 18px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 4px 2px #427b4b55)}
+h1{font-size:clamp(1.45rem,3vw,2.35rem);margin:0;color:#145a37;text-shadow:0 2px white}.subtitle{margin:4px 0 0;font-weight:700;color:#417348}
+.pill{background:#fffdf0;border:2px solid #d5edab;border-radius:999px;padding:10px 15px;font-weight:900;box-shadow:0 4px 0 #9acb79}
+main{max-width:1200px;margin:auto;padding:10px 18px 30px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+.panel{background:#ffffffd9;border:3px solid white;border-radius:25px;padding:20px;box-shadow:0 9px 0 #75b96555}
+.story{display:flex;align-items:center;gap:14px}.story img{width:112px;height:112px;object-fit:contain;flex-shrink:0}.story h2{margin:0 0 8px;font-size:1.35rem}.story p{margin:0;line-height:1.5}
+.btn{border-radius:16px;padding:12px 18px;font-weight:900;box-shadow:0 5px 0 #0e5b3b;transition:.12s transform,.12s box-shadow}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #0e5b3b}.primary{background:#35bd73;color:white}.secondary{background:#ffe16d;color:#5a4110;box-shadow:0 5px 0 #c59d2e}.pink{background:#ffb4d1;color:#76314e;box-shadow:0 5px 0 #ce7599}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.stat{background:#f4ffdb;border-radius:15px;padding:10px;text-align:center;border:2px solid #d9f0ae}.stat b{display:block;font-size:1.35rem}
+.mission{margin-top:18px}.missionHead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.missionHead h2{margin:0;font-size:1.3rem}.progress{height:12px;background:#d9edbd;border-radius:999px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#3bc777,#ffe16d);transition:width .3s}
+.task{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:stretch}.scene{background:linear-gradient(135deg,#fff8d9,#e7ffd9);border-radius:20px;padding:16px;display:flex;align-items:center;gap:14px;border:2px dashed #9bcf80}.scene img{width:118px;height:118px;object-fit:contain;flex-shrink:0}.scene h3{margin:0 0 6px}.scene p{margin:0;line-height:1.45}
+.dropzones{display:grid;grid-template-columns:1fr 1fr;gap:12px}.zone{background:#f9fff0;border:3px dashed #9acb79;border-radius:18px;padding:12px;min-height:126px}.zone h3{font-size:1rem;margin:0 0 8px}.slot{min-height:64px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:12px;padding:8px;background:#e9f8d5;font-weight:800;color:#456b3c}.slot.filled{background:#fff0bd;border:2px solid #e8c84f;color:#624b12}.slot.good{background:#c9f8d6;border:2px solid #38b66b;color:#116a39}.slot.bad{animation:shake .25s 2}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.bank{margin-top:16px;background:#f4ffe7;border-radius:20px;padding:14px;border:2px solid #d6efb4}.bank h3{margin:0 0 10px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{user-select:none;touch-action:none;background:white;border:2px solid #c8e5a6;border-radius:15px;padding:12px 10px;min-height:96px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;box-shadow:0 4px 0 #c5dfac;cursor:grab;position:relative}.card:active{cursor:grabbing}.card.situation{border-color:#70b9e8;background:#f0faff}.card.proverb{border-color:#d2a4ef;background:#fcf5ff}.card.lesson{border-color:#ffbb7a;background:#fff8ed}.card.used{opacity:.28;pointer-events:none}.card .tag{position:absolute;top:5px;left:7px;font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;opacity:.65}
+.note{font-size:.92rem;color:#53744d;margin:10px 0 0}.feedback{font-size:1.05rem;font-weight:900;min-height:30px;margin-top:12px}.success{color:#148044}.oops{color:#b65338}
+footer{text-align:center;padding:12px;color:#356b42;font-weight:700}
+#cameraBox{display:none;gap:10px;align-items:center;flex-wrap:wrap;background:#eaf8ff;border-radius:14px;padding:10px;margin-top:12px}#camera{width:140px;max-width:40%;border-radius:12px;transform:scaleX(-1);background:#244}#gestureStatus{font-weight:800;font-size:.9rem}
+.overlay{position:fixed;inset:0;background:#153a2bcc;display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}.modal{max-width:620px;width:100%;background:#fffbe9;border-radius:28px;border:4px solid white;padding:28px;text-align:center;box-shadow:0 15px 0 #113c2a66}.modal img{width:150px;height:150px;object-fit:contain}.modal h2{font-size:clamp(1.6rem,4vw,2.4rem);margin:8px}.modal p{line-height:1.6}
+@media(max-width:800px){.hero,.task{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.dropzones{grid-template-columns:1fr 1fr}.scene img{width:88px;height:88px}.panel{padding:15px}.brand img{width:50px;height:50px}}
+@media(max-width:430px){.dropzones{grid-template-columns:1fr}.story img{width:80px;height:80px}.scene{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand"><img src="assets/kancil.png" alt="Sang Kancil"><div><h1>🐘 Misi Padankan Hikmah</h1><p class="subtitle">Ekspedisi Rimba Ajaib • Game 3</p></div></div>
+  <div class="pill">💎 Kristal Hikmah: <span id="crystals">0</span></div>
+</div>
+<main>
+  <section class="hero">
+    <div class="panel">
+      <div class="story"><img id="heroAnimal" src="assets/kerbau.png" alt="Gajah rimba"><div><h2>Selamat datang, Wira Rimba!</h2><p>Bantu haiwan rimba mencari <b>situasi, peribahasa dan pengajaran</b> yang sepadan. Lengkapkan 5 misi untuk membina Jambatan Hikmah Ajaib!</p></div></div>
+      <div class="controls">
+        <button class="btn primary" id="startBtn">🌿 Mula Misi</button>
+        <button class="btn secondary" id="soundBtn">🔊 Bunyi: Hidup</button>
+        <button class="btn pink" id="cameraBtn">🖐️ Aktifkan Kamera</button>
+      </div>
+      <div id="cameraBox"><video id="camera" autoplay playsinline muted></video><div><div id="gestureStatus">Kamera belum aktif.</div><p class="note">Cubit ibu jari + telunjuk untuk ambil kad, gerakkan tangan ke ruang padanan, kemudian lepaskan cubitan.</p><button class="btn pink" id="stopCameraBtn">Tutup kamera</button></div></div>
+      <div class="stats"><div class="stat">⭐ Mata<b id="score">0</b></div><div class="stat">🧩 Misi<b><span id="qnum">0</span>/5</b></div><div class="stat">🌉 Bahagian jambatan<b id="bridge">0/5</b></div></div>
+    </div>
+    <div class="panel" style="background:linear-gradient(150deg,#e1ffd0,#c9f4ff)">
+      <div class="story"><img src="assets/monyet.png" alt="Monyet"><div><h2>Kuasa tangan ajaib ✨</h2><p><b>Dengan tetikus:</b> seret kad ke ruang padanan.<br><b>Dengan kamera:</b> cubit untuk pegang kad, gerakkan tangan, lepaskan untuk letak kad.</p></div></div>
+      <div style="margin-top:12px;background:#fff8cf;border-radius:16px;padding:12px;font-weight:800">🎵 Muzik latar ceria dimainkan selepas kau menekan “Mula Misi”.</div>
+      <p class="note">Petua: kamera memerlukan kebenaran browser dan sambungan internet untuk memuatkan pengesan tangan. Tetikus sentiasa boleh digunakan sebagai pilihan.</p>
+    </div>
+  </section>
+
+  <section class="panel mission" id="mission">
+    <div class="missionHead"><h2 id="missionTitle">Misi 1: Bantu haiwan rimba!</h2><div class="pill">⏳ Tiada tekanan masa</div></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div class="task">
+      <div class="scene"><img id="sceneImg" src="assets/kerbau.png" alt="Situasi misi"><div><h3 id="sceneTitle">Situasi</h3><p id="sceneText">Tekan “Mula Misi” untuk bermula.</p></div></div>
+      <div class="dropzones">
+        <div class="zone" data-type="proverb"><h3>📜 Peribahasa</h3><div class="slot" id="slot-proverb">Letakkan kad peribahasa di sini</div></div>
+        <div class="zone" data-type="lesson"><h3>💡 Pengajaran</h3><div class="slot" id="slot-lesson">Letakkan kad pengajaran di sini</div></div>
+      </div>
+    </div>
+    <div class="bank"><h3>🃏 Kad pilihan — seret atau cubit kad</h3><div class="cards" id="cards"></div><p class="note">Padanan betul akan bercahaya hijau dan menambah mata. Kad salah kembali ke tempat asal. Pilih satu kad peribahasa dan satu kad pengajaran untuk setiap misi.</p><div class="feedback" id="feedback" aria-live="polite"></div><div class="controls"><button class="btn primary" id="checkBtn">✨ Semak Padanan</button><button class="btn secondary" id="nextBtn" disabled>➡️ Misi Seterusnya</button></div></div>
+  </section>
+</main>
+<footer>🌿 Belajar peribahasa sambil bermain • Misi Padankan Hikmah 🌿</footer>
+<div class="overlay" id="intro">
+  <div class="modal"><img src="assets/kancil.png" alt="Sang Kancil"><h2>Jom bina Jambatan Hikmah! 🌉</h2><p>Lengkapkan 5 misi. Padankan peribahasa dan pengajaran yang betul dengan situasi haiwan rimba. Kumpulkan kristal dan buka jambatan ajaib!</p><button class="btn primary" id="introStart">🚀 Mulakan Pengembaraan</button></div>
+</div>
+<div class="overlay" id="finish" style="display:none">
+  <div class="modal"><img src="assets/semut_belalang.png" alt="Semut dan belalang"><h2>Hebat, Wira Rimba! 🎉</h2><p id="finalText">Kau telah menyelesaikan semua misi.</p><div style="font-size:2rem;margin:10px">🏆 🌟 💎</div><button class="btn primary" id="replayBtn">🔁 Main Semula</button></div>
+</div>
+<script>
+const questions = [
+ {scene:"Gajah membantu arnab yang terjatuh dan membawa bakul makanannya.",img:"assets/kerbau.png",proverb:"Berat sama dipikul, ringan sama dijinjing.",lesson:"Kita hendaklah saling membantu ketika orang lain dalam kesusahan."},
+ {scene:"Semut mengumpulkan makanan sedikit demi sedikit sebelum musim hujan.",img:"assets/semut_belalang.png",proverb:"Sedikit-sedikit, lama-lama menjadi bukit.",lesson:"Usaha yang berterusan akan menghasilkan kejayaan."},
+ {scene:"Sang Kancil berfikir dahulu sebelum memilih jalan yang selamat untuk rakan-rakannya.",img:"assets/kancil.png",proverb:"Ukur baju di badan sendiri.",lesson:"Kita perlu membuat keputusan mengikut kemampuan dan keadaan."},
+ {scene:"Monyet bercakap benar kepada rakan-rakannya walaupun telah melakukan kesilapan.",img:"assets/monyet.png",proverb:"Berani kerana benar.",lesson:"Kita hendaklah bercakap benar dan bertanggungjawab atas perbuatan sendiri."},
+ {scene:"Haiwan rimba berkongsi makanan dengan rakan yang belum makan.",img:"assets/buaya.png",proverb:"Bagai isi dengan kuku.",lesson:"Kita hendaklah hidup bersatu padu dan menjaga hubungan baik."}
+];
+const distractorProverbs=["Bagai mencurah air ke daun keladi.","Seperti katak di bawah tempurung.","Bagai aur dengan tebing.","Nasi sudah menjadi bubur."];
+const distractorLessons=["Kita tidak perlu mendengar nasihat sesiapa.","Kita boleh membazir kerana makanan sentiasa ada.","Kita harus menyalahkan orang lain.","Kita tidak perlu merancang masa hadapan."];
+let index=0,score=0,crystals=0,started=false,soundOn=true,chosen={proverb:null,lesson:null},answered=false;
+let audioCtx=null,master=null,musicTimer=null,musicStep=0;
+const $=id=>document.getElementById(id);
+function initAudio(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();master=audioCtx.createGain();master.gain.value=.16;master.connect(audioCtx.destination)} if(audioCtx.state==="suspended")audioCtx.resume()}
+function tone(freq,duration=.14,type="sine",vol=.15,when=0){if(!soundOn)return;initAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime+when);g.gain.exponentialRampToValueAtTime(vol,audioCtx.currentTime+when+.02);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+when+duration);o.connect(g);g.connect(master);o.start(audioCtx.currentTime+when);o.stop(audioCtx.currentTime+when+duration+.04)}
+function sfx(kind){if(!soundOn)return;if(kind==="good"){[523,659,784,1046].forEach((n,i)=>tone(n,.18,"triangle",.16,i*.07))}else if(kind==="bad"){tone(220,.2,"sawtooth",.09);tone(180,.22,"sawtooth",.07,.13)}else if(kind==="pick"){tone(660,.08,"sine",.1)}else if(kind==="win"){[523,659,784,659,784,1046].forEach((n,i)=>tone(n,.22,"triangle",.16,i*.12))}}
+function music(){if(!soundOn||!audioCtx)return;const notes=[523,659,784,659,587,698,880,698,523,659,784,1046,880,784,659,587];tone(notes[musicStep%notes.length],.24,"triangle",.045);musicStep++}
+function startMusic(){if(!audioCtx)initAudio();if(musicTimer)clearInterval(musicTimer);music();musicTimer=setInterval(music,330)}
+function stopMusic(){if(musicTimer)clearInterval(musicTimer);musicTimer=null}
+$("soundBtn").onclick=()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"🔊 Bunyi: Hidup":"🔇 Bunyi: Senyap";if(soundOn){initAudio();startMusic()}else stopMusic()};
+function shuffle(a){return a.sort(()=>Math.random()-.5)}
+function startGame(){initAudio();startMusic();$("intro").style.display="none";$("finish").style.display="none";index=0;score=0;crystals=0;started=true;updateStats();loadQuestion()}
+function updateStats(){$("score").textContent=score;$("crystals").textContent=crystals;$("qnum").textContent=started?index+1:0;$("bridge").textContent=crystals+"/5";$("progressBar").style.width=(crystals/5*100)+"%"}
+function loadQuestion(){answered=false;chosen={proverb:null,lesson:null};$("nextBtn").disabled=true;$("checkBtn").disabled=false;$("feedback").textContent="";$("feedback").className="feedback";let q=questions[index];$("missionTitle").textContent=`Misi ${index+1}: ${["Bantu si Arnab!","Sediakan bekalan!","Pilih jalan bijak!","Berani berkata benar!","Kongsi rezeki!"][index]}`;$("sceneImg").src=q.img;$("sceneText").textContent=q.scene;
+$("slot-proverb").textContent="Letakkan kad peribahasa di sini";$("slot-lesson").textContent="Letakkan kad pengajaran di sini";$("slot-proverb").className="slot";$("slot-lesson").className="slot";
+let cards=[{type:"proverb",text:q.proverb,correct:true},{type:"proverb",text:distractorProverbs[(index)%4]},{type:"proverb",text:distractorProverbs[(index+1)%4]},{type:"lesson",text:q.lesson,correct:true},{type:"lesson",text:distractorLessons[(index)%4]},{type:"lesson",text:distractorLessons[(index+1)%4]}];cards=shuffle(cards);const root=$("cards");root.innerHTML="";
+cards.forEach((c,i)=>{const el=document.createElement("div");el.className="card "+c.type;el.draggable=true;el.dataset.type=c.type;el.dataset.text=c.text;el.dataset.correct=c.correct?"yes":"no";el.id="card-"+i;el.innerHTML=`<span class="tag">${c.type==="proverb"?"Peribahasa":"Pengajaran"}</span><span>${c.text}</span>`;el.addEventListener("dragstart",e=>{if(answered)return;e.dataTransfer.setData("text/plain",el.id);sfx("pick")});el.addEventListener("click",()=>{if(answered)return;placeCard(el,c.type)});root.appendChild(el)});
+updateStats()}
+function placeCard(el,type){if(answered)return;if(type!=="proverb"&&type!=="lesson")return;const old=chosen[type];if(old){old.classList.remove("used");}chosen[type]=el;el.classList.add("used");const slot=$("slot-"+type);slot.textContent=el.querySelector("span:last-child").textContent;slot.classList.add("filled");slot.dataset.correct=el.dataset.correct;sfx("pick")}
+document.querySelectorAll(".zone").forEach(zone=>zone.addEventListener("dragover",e=>{e.preventDefault();zone.style.background="#e4ffd9"}));
+document.querySelectorAll(".zone").forEach(zone=>zone.addEventListener("dragleave",()=>zone.style.background=""));
+document.querySelectorAll(".zone").forEach(zone=>zone.addEventListener("drop",e=>{e.preventDefault();zone.style.background="";const el=$(e.dataTransfer.getData("text/plain"));if(el&&el.dataset.type===zone.dataset.type)placeCard(el,zone.dataset.type);else{sfx("bad");$("feedback").textContent="Pilih kad daripada kategori yang betul ya!";$("feedback").className="feedback oops"}}));
+$("checkBtn").onclick=()=>{if(!chosen.proverb||!chosen.lesson){$("feedback").textContent="Pilih satu kad peribahasa dan satu kad pengajaran dahulu."; $("feedback").className="feedback oops";sfx("bad");return}
+const ok=chosen.proverb.dataset.correct==="yes"&&chosen.lesson.dataset.correct==="yes";
+if(ok){answered=true;score+=20;crystals++;$("slot-proverb").classList.add("good");$("slot-lesson").classList.add("good");$("feedback").textContent="Hebat! Padanan tepat! +20 mata dan +1 Kristal Hikmah 💎";$("feedback").className="feedback success";$("checkBtn").disabled=true;$("nextBtn").disabled=false;sfx("good");}
+else{$("feedback").textContent="Belum tepat! Kad salah kembali ke tempat asal. Cuba pilih jawapan lain. 💪";$("feedback").className="feedback oops";sfx("bad");["proverb","lesson"].forEach(type=>{if(chosen[type]&&chosen[type].dataset.correct!=="yes"){chosen[type].classList.remove("used");chosen[type]=null;$("slot-"+type).textContent=type==="proverb"?"Letakkan kad peribahasa di sini":"Letakkan kad pengajaran di sini";$("slot-"+type).className="slot"}})}
+updateStats()};
+$("nextBtn").onclick=()=>{if(index<questions.length-1){index++;loadQuestion()}else{stopMusic();sfx("win");$("finish").style.display="flex";$("finalText").textContent=`Kau mengumpul ${score} mata dan ${crystals} daripada 5 Kristal Hikmah. Teruskan berlatih peribahasa!`;started=false}};
+$("startBtn").onclick=startGame;$("introStart").onclick=startGame;$("replayBtn").onclick=startGame;
+let handTask=null,stream=null,video=$("camera"),pinching=false,dragging=null,lastHandX=0,lastHandY=0;
+async function enableCamera(){try{initAudio();$("cameraBox").style.display="flex";$("gestureStatus").textContent="Memuatkan pengesan tangan…";if(!window.Hands){await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js");await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js")}
+const hands=new Hands({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});hands.setOptions({maxNumHands:1,modelComplexity:0,minDetectionConfidence:.55,minTrackingConfidence:.5});hands.onResults(onHands);
+stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:640,height:480},audio:false});video.srcObject=stream;await video.play();
+const pump=async()=>{if(stream&&video.readyState>=2){await hands.send({image:video})}if(stream)requestAnimationFrame(pump)};pump();$("gestureStatus").textContent="Kamera aktif! Cubit untuk ambil kad."}
+catch(e){$("gestureStatus").textContent="Kamera tak dapat diaktifkan. Benarkan akses kamera atau gunakan tetikus.";console.error(e)}}
+function loadScript(src){return new Promise((resolve,reject)=>{const s=document.createElement("script");s.src=src;s.crossOrigin="anonymous";s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}
+function onHands(results){if(!results.multiHandLandmarks||!results.multiHandLandmarks.length){$("gestureStatus").textContent="Tunjukkan tangan ke kamera.";if(pinching)releasePinch();return}
+const lm=results.multiHandLandmarks[0],thumb=lm[4],indexTip=lm[8],dist=Math.hypot(thumb.x-indexTip.x,thumb.y-indexTip.y),pinch=dist<.055;const x=(1-indexTip.x)*window.innerWidth,y=indexTip.y*window.innerHeight;lastHandX=x;lastHandY=y;
+if(pinch&&!pinching){pinching=true;const target=document.elementFromPoint(x,y);const card=target&&target.closest(".card");if(card&&!card.classList.contains("used")&&answered===false){dragging=card;dragging.style.outline="4px solid #ffd45c";sfx("pick")}}
+if(pinch&&dragging){dragging.style.position="fixed";dragging.style.zIndex="99";dragging.style.pointerEvents="none";dragging.style.left=(x-dragging.offsetWidth/2)+"px";dragging.style.top=(y-dragging.offsetHeight/2)+"px"}
+if(!pinch&&pinching){releasePinch()}
+$("gestureStatus").textContent=pinch?"🤏 Cubit dikesan — gerakkan kad!":"☝️ Tunjuk jari dan cubit kad."}
+function releasePinch(){pinching=false;if(dragging){const el=dragging;el.style.position="";el.style.zIndex="";el.style.pointerEvents="";el.style.left="";el.style.top="";el.style.outline="";const target=document.elementFromPoint(lastHandX,lastHandY);const zone=target&&target.closest(".zone");if(zone&&zone.dataset.type===el.dataset.type){placeCard(el,el.dataset.type)}else if(target&&target.closest(".card")){placeCard(el,el.dataset.type)}dragging=null}}
+$("cameraBtn").onclick=enableCamera;
+$("stopCameraBtn").onclick=()=>{if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}video.srcObject=null;$("cameraBox").style.display="none";$("gestureStatus").textContent="Kamera ditutup.";if(dragging)releasePinch()};
+window.addEventListener("beforeunload",()=>{stopMusic();if(stream)stream.getTracks().forEach(t=>t.stop())});
+</script>
+</body>
+</html>
